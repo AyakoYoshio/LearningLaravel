@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Providers;
-
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
+    protected $namespace = 'App\Http\Controllers';
     /**
      * Bootstrap any application services.
      *
@@ -13,7 +14,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        parent::boot();
+
+        Route::model('articles', 'App\Article');
     }
 
     /**
